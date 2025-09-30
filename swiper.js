@@ -458,7 +458,7 @@ window.addEventListener("resize", handleSwipers);
 
 document.addEventListener("DOMContentLoaded", function () {
   const portoSlideSwiper = new Swiper(".swiper.is-slider-porto", {
-    slidesPerView: 1,
+    slidesPerView: 0.8,
     spaceBetween: 16,
     breakpoints: {
       568: {
@@ -474,3 +474,4 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 //
+
