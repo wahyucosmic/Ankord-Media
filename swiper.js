@@ -294,14 +294,22 @@ function setupAnimations() {
           element.innerHTML = "";
           const animationPath = element.getAttribute("data-src");
           if (animationPath) {
-            const anim = lottie.loadAnimation({
-              container: element,
-              renderer: "svg",
-              loop: false,
-              autoplay: false,
-              path: animationPath,
-            });
-            lottieAnimations.push(anim);
+            setTimeout(() => {
+              const anim = lottie.loadAnimation({
+                container: element,
+                renderer: "svg",
+                loop: false,
+                autoplay: false,
+                path: animationPath,
+              });
+            
+              // safer: wait until loaded
+              anim.addEventListener("DOMLoaded", () => {
+                console.log("Lottie fully loaded");
+              });
+            
+              lottieAnimations.push(anim); // or element.lottieAnim = anim
+            }, 200); // add a small delay
           }
         });
 
@@ -474,6 +482,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 //
+
 
 
 
